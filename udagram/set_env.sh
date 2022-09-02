@@ -7,6 +7,6 @@ export POSTGRES_DB=postgres
 export AWS_BUCKET=arn:aws:s3:::mybk435567672677
 # export AWS_REGION=us-east-2
 export AWS_DEFAULT_REGION=us-east-2
-export AWS_PROFILE=default
+export AWS_PROFILE=vuongtv
 export JWT_SECRET=mysecretstring
 export URL=http://localhost:8100
