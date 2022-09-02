@@ -30,4 +30,4 @@ jobs:
                 command: npm run backend:build
             - run:
                 name: Deploy Backend Application
-                command: npm list
+                command: npm run backend:deploy
