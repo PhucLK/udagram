@@ -1,10 +1,9 @@
 branch-defaults:
-  main:
+  default:
     environment: Udagram-env
-    group_suffix: null
 global:
-  application_name: udagram2
-  branch: main
+  application_name: udagram
+  branch: null
   default_ec2_keyname: null
   default_platform: Node.js 14 running on 64bit Amazon Linux 2
   default_region: us-east-2
@@ -12,7 +11,8 @@ global:
   instance_profile: null
   platform_name: null
   platform_version: null
-  profile: null
-  repository: origin
+  repository: null
   sc: null
   workspace_type: Application
+deploy:
+  artifact: www/Archive.zip
