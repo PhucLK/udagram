@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedItemComponent } from './feed-item.component';
 import { feedItemMocks } from '../models/feed-item.model';
+import { FeedProviderService } from '../services/feed.provider.service';
 
 describe('FeedItemComponent', () => {
   let component: FeedItemComponent;
@@ -39,4 +40,18 @@ describe('FeedItemComponent', () => {
     const paragraphs = app.querySelectorAll('p');
     expect(([].slice.call(paragraphs)).map((x) => x.innerText)).toContain(feedItemMocks[0].caption);
   });
+
+  // it('should open a modal when clicked', () => {
+  //   de = fixture.debugElement.query(By.css('ion-buttons button'));
+  //   de.triggerEventHandler('click', null);
+  //   expect(navCtrl.push).toHaveBeenCalledWith(WishlistPage);
+  // });
+
+  // it('should open a modal when clicked', () => {
+  //   let navCtrl = fixture.debugElement.injector.get(NavController);
+  //   spyOn(navCtrl, 'push');
+  //   de = fixture.debugElement.query(By.css('ion-buttons button'));
+  //   de.triggerEventHandler('click', null);
+  //   expect(navCtrl.push).toHaveBeenCalledWith(WishlistPage);
+  // });
 });

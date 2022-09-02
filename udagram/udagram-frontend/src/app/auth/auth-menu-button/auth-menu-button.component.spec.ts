@@ -1,17 +1,17 @@
+import { AuthMenuButtonComponent } from './auth-menu-button.component';
+
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AuthMenuUserComponent } from './auth-menu-user.component';
 import { ModalController } from '@ionic/angular';
 
-describe('AuthMenuUserPage', () => {
-  let component: AuthMenuUserComponent;
-  let fixture: ComponentFixture<AuthMenuUserComponent>;
+
+describe('AuthMenuButtonPage', () => {
+  let component: AuthMenuButtonComponent;
+  let fixture: ComponentFixture<AuthMenuButtonComponent>;
   let modalSpy;
   let modalCtrlSpy;
-
   beforeEach(async(() => {
-    modalSpy = jasmine.createSpyObj('Modal', ['dismiss']);
+    modalSpy = jasmine.createSpyObj('Modal', ['present']);
     modalCtrlSpy = jasmine.createSpyObj('ModalController', ['create']);
     modalCtrlSpy.create.and.callFake(function () {
         return modalSpy;
@@ -25,14 +25,14 @@ describe('AuthMenuUserPage', () => {
           useValue: modalCtrlSpy
         }
       ],
-      declarations: [ AuthMenuUserComponent ],
+      declarations: [ AuthMenuButtonComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthMenuUserComponent);
+    fixture = TestBed.createComponent(AuthMenuButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -40,10 +40,4 @@ describe('AuthMenuUserPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('#dismiss() should hide the modal', () => {
-  //     .........
-  //     expect(modalSpy.dismiss).toHaveBeenCalled(); 
-  //     .........
-  // });
 });
