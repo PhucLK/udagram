@@ -41,7 +41,7 @@ jobs:
           command: |
             npm run backend:build
   # deploy step will run only after manual approval
-  deploy:
+#   deploy:
     docker:
       - image: "cimg/base:stable"
       # more setup needed for aws, node, elastic beanstalk
@@ -68,7 +68,7 @@ workflows:
             branches:
               only:
                 - main
-          type: approval
-          requires:
-            - build
-      - deploy
+    #       type: approval
+    #       requires:
+    #         - build
+    #   - deploy
