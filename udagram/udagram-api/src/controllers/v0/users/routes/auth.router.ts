@@ -23,7 +23,10 @@ async function comparePasswords(plainTextPassword: string, hash: string): Promis
 }
 
 function generateJWT(user: User): string {
-  return jwt.sign(user.short(), c.config.jwt.secret);
+  console.log('sdfsdfsfsdfdsfsfdsf');
+  console.log(user.short());
+  
+  return jwt.sign('user.short()', 'c.config.jwt.secret');
 }
 
 export function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -73,13 +76,16 @@ router.post('/login', async (req: Request, res: Response) => {
   if (!authValid) {
     return res.status(401).send({ auth: false, message: 'Password was invalid.' });
   }
-
+  console.log('before------------------->');
+  
   const jwt = generateJWT(user);
   res.status(200).send({ auth: true, token: jwt, user: user.short() });
 });
 
 
 router.post('/', async (req: Request, res: Response) => {
+  console.log('zooooo0000000000');
+  
   const email = req.body.email;
   const plainTextPassword = req.body.password;
 
@@ -96,16 +102,19 @@ router.post('/', async (req: Request, res: Response) => {
     return res.status(422).send({ auth: false, message: 'User already exists.' });
   }
 
+  console.log('save user 1');
   const generatedHash = await generatePassword(plainTextPassword);
 
   const newUser = await new User({
     email: email,
     passwordHash: generatedHash,
   });
+  console.log('save user 1');
 
   const savedUser = await newUser.save();
 
-
+  console.log('save user');
+  
   const jwt = generateJWT(savedUser);
   res.status(201).send({ token: jwt, user: savedUser.short() });
 });

@@ -51,6 +51,8 @@ export class AuthService {
     return this.api.post('/users/auth/',
               {email: user.email, password: password})
               .then((res) => {
+                console.log(res.token);
+                
                 this.setTokenAndUser(res.token, res.user);
                 return res;
               })

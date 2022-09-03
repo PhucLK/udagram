@@ -15,6 +15,6 @@ export const config = {
   aws_secret_acess_key: process.env.AWS_SECRET_ACCESS_KEY,
   url: process.env.URL,
   jwt: {
-    secret: process.env.JWT_SECRET,
+    secret: '${process.env.JWT_SECRET}',
   },
 };
