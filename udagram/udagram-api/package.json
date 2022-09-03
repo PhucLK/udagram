@@ -2,9 +2,6 @@
   "name": "udagram-api",
   "version": "2.0.0",
   "description": "",
-  "engines": {
-    "node": "14.15.0"
-  },
   "main": "src/server.ts",
   "scripts": {
     "start": "node ./www/server.js",
@@ -20,24 +17,24 @@
   "author": "Gabriel Ruttner",
   "license": "ISC",
   "dependencies": {
-    "@types/bcrypt": "^3.0.0",
+    "@types/bcryptjs": "2.4.2",
     "@types/jsonwebtoken": "^8.3.2",
     "aws-sdk": "^2.429.0",
-    "bcrypt": "^3.0.6",
-    "body-parser": "^1.18.3",
+    "bcryptjs": "2.4.3",
+    "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.6.0",
+    "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.4",
     "sequelize-typescript": "^0.6.9"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.26",
-    "@types/cors": "^2.8.6",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.16.1",
     "@types/node": "^11.11.6",
     "@types/sequelize": "^4.27.44",
@@ -50,6 +47,6 @@
     "eslint-config-google": "^0.14.0",
     "mocha": "^6.1.4",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.5.3"
+    "typescript": "^3.9.10"
   }
 }
