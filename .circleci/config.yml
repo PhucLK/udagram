@@ -60,17 +60,17 @@ jobs:
           command: |
             npm run backend:deploy
             
-# workflows:
-#   udagram:
-#     jobs:
-#       - build :
-#           filters:
-#             branches:
-#               only:
-#                 - main
-    #       type: approval
-    #       requires:
-    #         - build
-    #   - deploy:
-    #       requires:
-    #         - hold
+workflows:
+  udagram:
+    jobs:
+      - build :
+          filters:
+            branches:
+              only:
+                - main
+          type: approval
+          requires:
+            - build
+      - deploy:
+        #   requires:
+        #     - hold
