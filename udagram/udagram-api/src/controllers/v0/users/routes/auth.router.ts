@@ -26,7 +26,7 @@ function generateJWT(user: User): string {
   console.log('sdfsdfsfsdfdsfsfdsf');
   console.log(user.short());
   
-  return jwt.sign('user.short()', 'c.config.jwt.secret');
+  return jwt.sign(user.short(), `${process.env.JWT_SECRET}`);
 }
 
 export function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -40,7 +40,7 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
   }
 
   const token = tokenBearer[1];
-  return jwt.verify(token, c.config.jwt.secret, (err, decoded) => {
+  return jwt.verify(token, `${process.env.JWT_SECRET}`, (err, decoded) => {
     if (err) {
       return res.status(500).send({ auth: false, message: 'Failed to authenticate.' });
     }

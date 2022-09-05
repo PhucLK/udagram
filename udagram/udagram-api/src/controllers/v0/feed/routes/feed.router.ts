@@ -7,22 +7,41 @@ import * as c from '../../../../config/config';
 const router: Router = Router();
 
 export function requireAuth(req: Request, res: Response, next: NextFunction) {
-  console.log(req);
+  console.log(req.headers);
   
   if (!req.headers || !req.headers.authorization) {
+    console.log('No authorization headers');
     return res.status(401).send({ message: 'No authorization headers.' });
   }
 
   const tokenBearer = req.headers.authorization.split(' ');
-  if (tokenBearer.length != 2) {
+  console.log(tokenBearer);
+  
+  if (tokenBearer[1]==='') {
+    console.log('No authorization headers 2');
     return res.status(401).send({ message: 'Malformed token.' });
   }
 
-  const token = tokenBearer[1];
-  return jwt.verify(token, c.config.jwt.secret, (err, decoded) => {
+  const token = tokenBearer[tokenBearer.length - 1];
+  console.log(token);
+  console.log(  `${process.env.JWT_SECRET}`);
+  
+  // return jwt.verify(token, c.config.jwt.secret, (err, decoded) => {
+  //   if (err) {
+  //     console.log('Failed');
+  //     return res.status(500).send({ auth: false, message: 'Failed to authenticate.' });
+  //   }
+  //   console.log('authenticate');
+  //   return next();
+  // });
+  return jwt.verify(token, `${process.env.JWT_SECRET}`, (err, decoded) => {
     if (err) {
+      console.log('Failed');
+      console.log(err);
+      
       return res.status(500).send({ auth: false, message: 'Failed to authenticate.' });
     }
+    console.log('authenticate');
     return next();
   });
 }
