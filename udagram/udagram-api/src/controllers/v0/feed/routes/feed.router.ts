@@ -7,6 +7,8 @@ import * as c from '../../../../config/config';
 const router: Router = Router();
 
 export function requireAuth(req: Request, res: Response, next: NextFunction) {
+  console.log(req);
+  
   if (!req.headers || !req.headers.authorization) {
     return res.status(401).send({ message: 'No authorization headers.' });
   }
@@ -49,6 +51,8 @@ router.get('/signed-url/:fileName',
   requireAuth,
   async (req: Request, res: Response) => {
     const { fileName } = req.params;
+    console.log(fileName);
+    
     const url = AWS.getPutSignedUrl(fileName);
     res.status(201).send({ url: url });
   });
