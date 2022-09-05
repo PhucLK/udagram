@@ -30,6 +30,7 @@ function generateJWT(user: User): string {
 }
 
 export function requireAuth(req: Request, res: Response, next: NextFunction) {
+  console.log(req.headers);
   if (!req.headers || !req.headers.authorization) {
     return res.status(401).send({ message: 'No authorization headers.' });
   }
@@ -84,7 +85,7 @@ router.post('/login', async (req: Request, res: Response) => {
 
 
 router.post('/', async (req: Request, res: Response) => {
-  console.log('zooooo0000000000');
+  // console.log('zooooo0000000000');
   
   const email = req.body.email;
   const plainTextPassword = req.body.password;
@@ -102,14 +103,14 @@ router.post('/', async (req: Request, res: Response) => {
     return res.status(422).send({ auth: false, message: 'User already exists.' });
   }
 
-  console.log('save user 1');
+  // console.log('save user 1');
   const generatedHash = await generatePassword(plainTextPassword);
 
   const newUser = await new User({
     email: email,
     passwordHash: generatedHash,
   });
-  console.log('save user 1');
+  // console.log('save user 1');
 
   const savedUser = await newUser.save();
 
@@ -123,4 +124,4 @@ router.get('/', async (req: Request, res: Response) => {
   res.send('auth');
 });
 
-export const AuthRouter: Router = router;
+ export  const  AuthRouter: Router = router;

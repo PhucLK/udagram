@@ -4,13 +4,15 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "start": "npm run tsc && node ./www/server.js",
+    "start": "node ./www/server.js",
     "tsc": "npx tsc",
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
     "build": "npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "jasmine": "jasmine",
+    "test": "npm-run-all tsc jasmine",
+    "allin" : "npm-run-all tsc start",
     "deploy": "chmod +x ./bin/deploy.sh && ./bin/deploy.sh"
   },
   "keywords": [],
@@ -42,12 +44,18 @@
     "@types/validator": "^10.9.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "@types/jasmine": "^3.6.3",
+    "@types/supertest": "^2.0.12",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "mocha": "^6.1.4",
+    "npm-run-all": "^4.1.5",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.9.10"
+    "typescript": "^3.9.10",
+    "jasmine": "^4.2.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "supertest": "^6.2.3"
   }
 }
