@@ -1,7 +1,7 @@
 # Udagram
 
 ## Hosting link
-The link to the application can be seen [here](http://udagram-hosting.s3-website.us-east-2.amazonaws.com/home).
+[here](http://mybk435567672677.s3-website.us-east-2.amazonaws.com).
 
 ## Installation
 

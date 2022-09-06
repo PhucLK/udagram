@@ -1,9 +1,3 @@
-## Infrastructure description
-
-This application have two main part : 
-udagram-api : An api application provide functionalitises for comming request
-udagram-frontend : an Angular application display UI, get and sent request to udagram-api application
-The app hosting on AWS 
 
 ## App Dependences :
 
@@ -50,7 +44,7 @@ The app hosting on AWS
     "supertest": "^6.2.3"
   }
 
-  ### udagram-frontend:
+### udagram-frontend:
 
 "dependencies": {
     "@angular/common": "^7.2.2",
@@ -96,11 +90,3 @@ The app hosting on AWS
     "tslint": "~5.12.0",
     "typescript": "~3.1.6"
   }
-
-
-  ## Pipeline process
-
-  This app intergrate with CircleCI :
-  - Build and Deploy front-end app to S3
-  - Build and Deploy back-end app to Elastic Beanstalk
-  - Tracking and Maintaining any changes of source from github
