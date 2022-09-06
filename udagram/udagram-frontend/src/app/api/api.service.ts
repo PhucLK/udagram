@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { FeedItem } from '../feed/models/feed-item.model';
 import { catchError, tap, map } from 'rxjs/operators';
 
-const API_HOST = environment.apiHost;
+const API_HOST = 'http://udagram-env-1.eba-uqq5s2up.us-east-2.elasticbeanstalk.com/api/v0'// environment.apiHost;
 
 @Injectable({
   providedIn: 'root'

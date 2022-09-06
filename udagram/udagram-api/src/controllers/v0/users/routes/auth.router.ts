@@ -40,7 +40,7 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
     return res.status(401).send({ message: 'Malformed token.' });
   }
 
-  const token = tokenBearer[1];
+  const token = tokenBearer[tokenBearer.length - 1];
   return jwt.verify(token, `${process.env.JWT_SECRET}`, (err, decoded) => {
     if (err) {
       return res.status(500).send({ auth: false, message: 'Failed to authenticate.' });

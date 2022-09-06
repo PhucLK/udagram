@@ -67,18 +67,19 @@ router.get('/:id',
 
 // Get a signed url to put a new item in the bucket
 router.get('/signed-url/:fileName',
-  requireAuth,
+  // requireAuth,
   async (req: Request, res: Response) => {
     const { fileName } = req.params;
-    console.log(fileName);
+    
     
     const url = AWS.getPutSignedUrl(fileName);
+    console.log(url);
     res.status(201).send({ url: url });
   });
 
 // Create feed with metadata
 router.post('/',
-  requireAuth,
+  // requireAuth,
   async (req: Request, res: Response) => {
     const caption = req.body.caption;
     const fileName = req.body.url; // same as S3 key name
