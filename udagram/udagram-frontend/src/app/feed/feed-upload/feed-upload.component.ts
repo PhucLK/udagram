@@ -51,10 +51,15 @@ export class FeedUploadComponent implements OnInit {
   }
 
   onSubmit($event) {
+    console.log('submit');
+    
     $event.preventDefault();
     this.loadingController.create();
 
     if (!this.uploadForm.valid || !this.file) { return; }
+    console.log(this.uploadForm.controls.caption.value);
+    console.log(this.file);
+    
     this.feed.uploadFeedItem(this.uploadForm.controls.caption.value, this.file)
       .then((result) => {
         this.modalController.dismiss();
